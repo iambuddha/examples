@@ -1,4 +1,6 @@
 #!/usr/local/bin/python3.8
+## more info https://gist.github.com/gregory-m/107e83cceb3009a080cec12c37e0a989
+
 import sys
 
 def main():
