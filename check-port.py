@@ -3,6 +3,8 @@
 from argparse import ArgumentParser
 import os
 import subprocess
+from sys import exit
+
 
 parser = ArgumentParser(description="kill the running process on a given port")
 parser.add_argument('port', type=int, help='port you want the process to be killed')
@@ -15,7 +17,8 @@ try:
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
 except subprocess.CalledProcessError:
-    print (f"no process listening on port {port}")
+    print (f"NO process listening on port {port}")
+    exit(1)
 else:
     listening = None
     for line in result.stdout.splitlines():
@@ -29,5 +32,5 @@ else:
         print(f"process with pid {pid} killed")
     else:
         print(f"no process listening on port {port}")
-
+        exit(1)
 
